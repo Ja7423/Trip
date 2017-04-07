@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *pictureScrollView;
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIButton *phoneButton;
@@ -196,7 +197,7 @@
                 
                 if (value && ![value isEqualToString:@""])
                 {
-                        // first , check if picture image already download in docutment directory
+                        // first , check if picture image has already download once in docutment directory
                         NSURL * fileURL = [_fileManager checkCacheFile:value.lastPathComponent];
                         if (fileURL)
                         {

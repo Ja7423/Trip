@@ -225,6 +225,7 @@
         NSString * updateDate = [NSDate stringFromDate:[NSDate date]];
         [[NSUserDefaults standardUserDefaults] setObject:updateDate forKey:@lastUpdateDateKey];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@hasLaunchedOnceKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"finishUpdate" object:nil];
 }

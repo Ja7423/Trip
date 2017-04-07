@@ -125,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7o-x4-npk" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="930.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="931"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2R-yB-Ap7">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -322,7 +322,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OtherInfo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkD-zN-sWQ" userLabel="Info">
-                                                <rect key="frame" x="0.0" y="760.5" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="760.5" width="375" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="EwC-fW-Pdx"/>
                                                 </constraints>
@@ -331,7 +331,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VXZ-Be-mZC">
-                                                <rect key="frame" x="0.0" y="780.5" width="375" height="150"/>
+                                                <rect key="frame" x="0.0" y="781" width="375" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="5Nq-Qs-2Oj"/>
                                                 </constraints>
