@@ -429,13 +429,14 @@
 
 - (void)callMapWithDirection
 {
+        NSString * directionApp = [[NSUserDefaults standardUserDefaults] objectForKey:@directionAppKey];
         float locationLatitude = _dataItem.Py.floatValue;
         float locationLongitude = _dataItem.Px.floatValue;
         
         NSURL * googleMapDirectionURL = [NSURL URLWithString:[NSString stringWithFormat:@"comgooglemaps://?saddr=%f,%f&daddr=%f,%f", _userLocation.coordinate.latitude, _userLocation.coordinate.longitude, locationLatitude, locationLongitude]];
         NSURL * appleMapDirectionURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.apple.com/?saddr=%f,%f&daddr=%f,%f", _userLocation.coordinate.latitude, _userLocation.coordinate.longitude, locationLatitude, locationLongitude]];
         
-        if ([[UIApplication sharedApplication] canOpenURL:googleMapDirectionURL])
+        if ([[UIApplication sharedApplication] canOpenURL:googleMapDirectionURL] && [directionApp isEqualToString:@googleMap])
         {
                 [[UIApplication sharedApplication] openURL:googleMapDirectionURL options:@{} completionHandler:^(BOOL success) {
                         

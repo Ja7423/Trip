@@ -10,9 +10,12 @@
 		0021350901F45049F797C38C /* libPods-TripManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7908DCB929FD65C58CFFAC98 /* libPods-TripManager.a */; };
 		A970464E1E766FB300AA7770 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A970464D1E766FB300AA7770 /* DetailViewController.m */; };
 		A985A80B1E6F1CDB00C74068 /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A985A80A1E6F1CDB00C74068 /* TableViewDataSource.m */; };
+		A99E62941E9E2EA800735DD0 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99E62931E9E2EA800735DD0 /* MenuTableViewController.m */; };
+		A99E62971E9E312400735DD0 /* SlideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99E62961E9E312400735DD0 /* SlideMenuController.m */; };
 		A9A1BBD81E8A500C003AD333 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A1BBD71E8A500C003AD333 /* UserNotifications.framework */; };
 		A9A1BBDA1E8A5015003AD333 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A1BBD91E8A5015003AD333 /* UserNotificationsUI.framework */; };
 		A9B649451E681F4700AF81DD /* DataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B649441E681F4700AF81DD /* DataOperation.m */; };
+		A9D18D941E9F94AA00204A59 /* PreviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D18D931E9F94AA00204A59 /* PreviewTableViewController.m */; };
 		A9D490AE1E7701D5007C9C56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D490AD1E7701D5007C9C56 /* MapKit.framework */; };
 		A9DD20AD1E7FB565004D8431 /* NSDate+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DD20AC1E7FB565004D8431 /* NSDate+Date.m */; };
 		A9E0261D1E8A3B3100DE7C2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9E0261C1E8A3B3100DE7C2B /* GoogleService-Info.plist */; };
@@ -49,10 +52,16 @@
 		A970464F1E7670DD00AA7770 /* CommunicateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicateDelegate.h; sourceTree = "<group>"; };
 		A985A8091E6F1CDB00C74068 /* TableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewDataSource.h; sourceTree = "<group>"; };
 		A985A80A1E6F1CDB00C74068 /* TableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewDataSource.m; sourceTree = "<group>"; };
+		A99E62921E9E2EA800735DD0 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
+		A99E62931E9E2EA800735DD0 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
+		A99E62951E9E312400735DD0 /* SlideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuController.h; sourceTree = "<group>"; };
+		A99E62961E9E312400735DD0 /* SlideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuController.m; sourceTree = "<group>"; };
 		A9A1BBD71E8A500C003AD333 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		A9A1BBD91E8A5015003AD333 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		A9B649431E681F4700AF81DD /* DataOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOperation.h; sourceTree = "<group>"; };
 		A9B649441E681F4700AF81DD /* DataOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOperation.m; sourceTree = "<group>"; };
+		A9D18D921E9F94AA00204A59 /* PreviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewTableViewController.h; sourceTree = "<group>"; };
+		A9D18D931E9F94AA00204A59 /* PreviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewTableViewController.m; sourceTree = "<group>"; };
 		A9D490AD1E7701D5007C9C56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A9DD20AB1E7FB565004D8431 /* NSDate+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Date.h"; sourceTree = "<group>"; };
 		A9DD20AC1E7FB565004D8431 /* NSDate+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Date.m"; sourceTree = "<group>"; };
@@ -235,6 +244,8 @@
 		A9F8DD4A1E5D331200F428D1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A99E62951E9E312400735DD0 /* SlideMenuController.h */,
+				A99E62961E9E312400735DD0 /* SlideMenuController.m */,
 				A9E6CB181E56F47300A459A6 /* ViewController.h */,
 				A9E6CB191E56F47300A459A6 /* ViewController.m */,
 				A9E6CB291E581DF900A459A6 /* ScheduleTableView.h */,
@@ -247,6 +258,10 @@
 				A9F6BBCE1E6EAEBF004B1321 /* SearchTableViewCell.m */,
 				A970464C1E766FB300AA7770 /* DetailViewController.h */,
 				A970464D1E766FB300AA7770 /* DetailViewController.m */,
+				A99E62921E9E2EA800735DD0 /* MenuTableViewController.h */,
+				A99E62931E9E2EA800735DD0 /* MenuTableViewController.m */,
+				A9D18D921E9F94AA00204A59 /* PreviewTableViewController.h */,
+				A9D18D931E9F94AA00204A59 /* PreviewTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -384,9 +399,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D18D941E9F94AA00204A59 /* PreviewTableViewController.m in Sources */,
 				A9F8DD591E5D758000F428D1 /* DownloadResponse.m in Sources */,
 				A9E6CB1A1E56F47300A459A6 /* ViewController.m in Sources */,
 				A9B649451E681F4700AF81DD /* DataOperation.m in Sources */,
+				A99E62971E9E312400735DD0 /* SlideMenuController.m in Sources */,
 				A9E6CB321E5856DA00A459A6 /* UIView+CustomView.m in Sources */,
 				A9DD20AD1E7FB565004D8431 /* NSDate+Date.m in Sources */,
 				A9E6CB171E56F47300A459A6 /* AppDelegate.m in Sources */,
@@ -394,6 +411,7 @@
 				A9F8DD561E5D74CB00F428D1 /* DownloadRequest.m in Sources */,
 				A9F8DD491E5C516300F428D1 /* SearchViewController.m in Sources */,
 				A9F6BBCF1E6EAEBF004B1321 /* SearchTableViewCell.m in Sources */,
+				A99E62941E9E2EA800735DD0 /* MenuTableViewController.m in Sources */,
 				A9E6CB351E5864ED00A459A6 /* DataModel.m in Sources */,
 				A9F8DD5F1E5E8EA200F428D1 /* DataBase.m in Sources */,
 				A9E6CB2B1E581DF900A459A6 /* ScheduleTableView.m in Sources */,

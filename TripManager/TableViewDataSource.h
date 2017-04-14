@@ -12,7 +12,7 @@
 @class TableViewDataSource;
 @protocol CustomDataSourceDelegate <NSObject>
 
-@required
+@optional
 - (BOOL)TableViewDataSource:(TableViewDataSource *)tableViewDataSource canEditRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)TableViewDataSource:(TableViewDataSource *)tableViewDataSource commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forDataItem:(DataItem *)editItem;
@@ -33,6 +33,7 @@
 - (id)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (BOOL)isContainThisData:(DataItem *)item;
+
 
 #pragma mark - update
 - (void)updateTableView:(UITableView *)tableView cellOrderFromGesture:(UIGestureRecognizer *)gesture;

@@ -20,6 +20,8 @@
 #import "CommunicateDelegate.h"
 #import "TableViewDataSource.h"
 
+#import "SlideMenuController.h"
+
 #import "ViewController.h"
 #import "ScheduleTableView.h"
 #import "ScheduleTableViewCell.h"
@@ -28,6 +30,10 @@
 #import "SearchTableViewCell.h"
 
 #import "DetailViewController.h"
+
+#import "MenuTableViewController.h"
+
+#import "PreviewTableViewController.h"
 
 #import "DataBase.h"
 #import "DataModel.h"

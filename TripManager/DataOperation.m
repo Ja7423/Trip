@@ -58,7 +58,6 @@
 - (void)startDownloadDataBaseWhenReceiveNotification
 {
         // check if need download
-        
         [self isNeedUpdateDatabaseWhenReceiveNotification:^(BOOL needUpdate) {
                 
                 if (needUpdate)
@@ -91,11 +90,10 @@
 }
 
 #pragma mark schedule
-- (void)queryScheduleDataFromTable:(NSString *)table where:(NSString *)column value:(NSString *)condition completion:(void (^) (NSMutableArray *))completion
+- (void)queryScheduleDataFromTable:(NSString *)table where:(NSString *)column value:(NSString *)condition completion:(void (^) (NSArray *))completion
 {
         NSMutableArray * tempArray = [NSMutableArray array];
         NSMutableArray * data = [NSMutableArray array];
-        
         NSArray * dataBaseTable = [DownloadSource new].baseTable;
         NSMutableArray * tableConditions = [NSMutableArray array];
         NSMutableArray * dataBaseTableConditions = [NSMutableArray array];
@@ -117,13 +115,37 @@
                                 [tempArray addObject:[self processQueryResult:resultSet]];
                         }
                 }];
+                
+                if (completion)
+                {
+                        [data addObject:tempArray];
+                        completion(data);
+                }
         }];
+}
+
+- (void)queryScheduleFileData:(NSArray *)queryDatas completion:(void (^) (NSArray *))completion
+{
+        NSMutableArray * tempArray = [NSMutableArray array];
+        NSMutableArray * data = [NSMutableArray array];
+        NSArray * queryTables = [[DownloadSource alloc]init].baseTable;
         
-        if (completion)
-        {
-                [data addObject:tempArray];
-                completion(data);
-        }
+        [[DataBase sharedDataBase] queryScheduleFileData:queryDatas FromTable:queryTables completion:^(NSArray *resultSets) {
+                
+                [resultSets enumerateObjectsUsingBlock:^(FMResultSet * resultSet, NSUInteger idx, BOOL * _Nonnull stop) {
+                        
+                        while ([resultSet next])
+                        {
+                                [tempArray addObject:[self processQueryResult:resultSet]];
+                        }
+                }];
+                
+                if (completion)
+                {
+                        [data addObject:tempArray];
+                        completion(data);
+                }
+        }];
 }
 
 - (void)insertData:(DataItem *)items intoScheduleTable:(NSString *)table
@@ -178,8 +200,6 @@
                         }
                 }];
         }
-        
-        
 }
 
 - (void)isNeedUpdateDatabaseWhenReceiveNotification:(void (^) (BOOL needUpdate))completion

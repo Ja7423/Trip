@@ -16,4 +16,6 @@
 
 - (void)viewController:(UIViewController *)viewController didEditDataItem:(DataItem *)dataItem;
 
+- (void)viewController:(UIViewController *)viewController shouldPresentViewController:(UIViewController *)presentViewController;
+
 @end

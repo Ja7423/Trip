@@ -10,15 +10,23 @@
 #define define_h
 
 #define customDateFormat "yyyy/MM/dd"
-#define timePickFormat "HH:mm"
+#define timePickFormat       "HH:mm"
 
 // cell Id
 #define scheduleTableViewCellReuseIdentifier    "scheduleTableViewCell"
 #define searchTableViewCellReuseIdentifier       "searchTableViewCell"
+#define menuTableViewCellReuseIdentifier         "menuCell"
+#define previewTableViewCellReuseIdentifier      "previewCell"
 
 // userdefault key
 #define lastUpdateDateKey       "lastUpdateDate"
 #define hasLaunchedOnceKey    "hasLaunchedOnce"
+#define directionAppKey            "directionApp"
+
+// support direction app
+#define googleMap        "google map"
+#define appleMap          "apple map"
+
 
 typedef NS_ENUM(NSInteger, requestType)
 {
@@ -31,6 +39,12 @@ typedef NS_ENUM(NSInteger, dataItemType)
         dataItemTypeScenicspot,
         dataItemTypeRestaurant,
         dataItemTypeHotel,
+};
+
+typedef NS_ENUM(NSInteger, dataSourceType)
+{
+        dataSourceTypeSQLite,
+        dataSourceTypeLocalFile,
 };
 
 typedef void (^TableViewCellConfigureBlock)(id cell, id item);

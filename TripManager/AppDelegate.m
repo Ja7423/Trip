@@ -18,6 +18,13 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+        NSLog(@"URL : %@", url);
+        NSLog(@"options : %@", options);
+        
+        return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Override point for customization after application launch.
@@ -107,7 +114,7 @@
         
         // TODO: Clean all download file in DocumentDirectory
         FileManager * manager = [[FileManager alloc]init];
-        [manager removeAllFile];
+        [manager removeDownloadFile];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

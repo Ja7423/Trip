@@ -11,22 +11,19 @@
 
 @interface DataModel : NSObject
 
+#pragma mark - init
 - (instancetype)initWithQueryData:(NSArray *)data;
 
+#pragma mark - tableview data source
 - (NSInteger)numberOfSection;
-
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
-
 - (id)dataForRowAtIndexPath:(NSIndexPath *)indexPath;
-
 - (NSMutableArray *)dataArray;
 
-- (void)updateDataOrderFrom:(NSIndexPath *)oldIndexPath to:(NSIndexPath *)newIndexPath;
-
+#pragma mark - data operation
 - (void)insertData:(DataItem *)item To:(NSInteger)section;
-
+- (void)updateDataOrderFrom:(NSIndexPath *)oldIndexPath to:(NSIndexPath *)newIndexPath;
 - (void)updateData:(DataItem *)item To:(NSIndexPath *)indexPath;
-
 - (DataItem *)deleteDataAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

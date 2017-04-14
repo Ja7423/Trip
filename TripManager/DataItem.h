@@ -58,6 +58,8 @@
 @property (nonatomic) NSString * VisitTime;
 
 
+- (NSDictionary *)jsonDictionary;
+
 
 /*  sample
  //scenicspot

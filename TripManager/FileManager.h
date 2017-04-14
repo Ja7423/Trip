@@ -11,14 +11,23 @@
 
 @interface FileManager : NSObject
 
+#pragma mark - remove
 - (void)removeFile:(NSURL *)fileLocation;
+- (void)removeDownloadFile;
+- (void)removeInboxFile;
 
-- (void)removeAllFile;
-
+#pragma mark - move
 - (NSURL *)moveFile:(NSString *)Filename from:(NSURL *)fromURL;
 
+#pragma mark - check
 - (NSURL *)checkCacheFile:(NSString *)fileName;
 
+#pragma mark - read
 - (NSArray *)readJSONFile:(NSURL *)fileLocation;
+- (NSArray *)readInboxList;
+- (NSArray *)readInboxFile:(NSString *)fileName;
+
+#pragma mark - write
+- (NSURL *)wirteFileWithContent:(NSDictionary *)writeData;
 
 @end

@@ -23,4 +23,20 @@
         }
 }
 
+- (NSDictionary *)jsonDictionary
+{
+        NSString * CustomRemarks = (_CustomRemarks) ? _CustomRemarks : @"備註";
+        NSString * VisitTime = (_VisitTime) ? _VisitTime : @"00:00";
+        
+        return @{@"Name" : _Name,
+                      @"Id" : _Id,
+                      @"Date": _Date,
+                      @"OrderIndex" : _OrderIndex,
+                      @"DataItemType" : _DataItemType,
+                      @"CustomRemarks" : CustomRemarks,
+                      @"VisitTime" : VisitTime
+                 };
+}
+
+
 @end

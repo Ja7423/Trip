@@ -23,6 +23,8 @@
 #pragma mark - schedule table
 - (void)queryScheduleDataFromTable:(NSString *)table innerJoin:(NSArray *)dataBaseTables on:(NSArray *)tableConditions equalTo:(NSArray *)dataBaseTableConditions where:(NSString *)column equalValue:(NSString *)condition completion:(void (^) (NSArray * resultSets))completion;
 
+- (void)queryScheduleFileData:(NSArray *)queryDatas FromTable:(NSArray *)tables completion:(void (^) (NSArray * resultSets))completion;
+
 - (void)insertData:(DataItem *)item intoScheduleTable:(NSString *)table;
 
 - (void)updateData:(NSArray *)items intoScheduleTable:(NSString *)table;

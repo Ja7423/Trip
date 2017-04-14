@@ -14,8 +14,10 @@
         DataOperation * _dataOperation;
         TableViewDataSource * _tableViewDataSource;
         DataModel * _dataModel;
+        
         SearchViewController * _searchVC;
         DetailViewController * _detailVC;
+        MenuTableViewController * _menuVC;
 }
 
 @property (nonatomic) BOOL showIndicator;
@@ -24,8 +26,9 @@
 @property (nonatomic) FSCalendar * calendar;
 @property (nonatomic) UIView * containerView;
 @property (nonatomic) UIActivityIndicatorView * activityIndicatorView;
+@property (nonatomic) UIToolbar * toolBar;
+@property (nonatomic) UIPanGestureRecognizer * panGesture;
 
-//@property (nonatomic) ScheduleTableView * scheduleTableView;
 @property (weak, nonatomic) IBOutlet ScheduleTableView *scheduleTableView;
 
 @end
@@ -41,7 +44,11 @@
         [self configureNavigationController];
         [self configureNavigationItem];
         [self configureTableView];
+        [self configureSlideMenu];
+        
         [self configureCalendar];
+        [self configureToolBar];
+        
         [self updateNavigationTitle:[NSDate stringFromDate:[NSDate date]]];
         
         _dataOperation = [[DataOperation alloc]init];
@@ -99,6 +106,15 @@
         return cellBlock;
 }
 
+- (void)configureSlideMenu
+{
+        _menuVC = [[MenuTableViewController alloc]init];
+        _menuVC.delegate = self;
+        [SlideMenuController sharedInstance].leftMenuController = _menuVC;
+        [SlideMenuController sharedInstance].leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:[SlideMenuController sharedInstance] action:@selector(clickBarButtonItem:)];
+        [SlideMenuController sharedInstance].allowSwipeMenu = NO;
+}
+
 - (void)configureCalendar
 {
         _calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 300)];
@@ -112,6 +128,26 @@
         _containerView = [[UIView alloc]initWithFrame:self.view.frame];
         _containerView.alpha = 0.5;
         _containerView.backgroundColor = [UIColor grayColor];
+}
+
+- (void)configureToolBar
+{
+        _toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44)];
+        
+        UIBarButtonItem * slideLeftItem =[SlideMenuController sharedInstance].leftBarButtonItem;
+        UIBarButtonItem *flexibleBarButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        UIBarButtonItem *shareBarButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareSchedule)];
+        _toolBar.items = @[slideLeftItem, flexibleBarButton, shareBarButton];
+        
+        [self.view addSubview:_toolBar];
+}
+
+#pragma mark gesture
+- (void)configurePanGesture
+{
+        // not used, because gesture will conflict with tableview data source commitEditing
+        _panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:[SlideMenuController sharedInstance] action:@selector(swipeMenu:)];
+        [self.view addGestureRecognizer:_panGesture];
 }
 
 #pragma mark - notification
@@ -146,6 +182,18 @@
         [self.navigationController pushViewController:_searchVC animated:YES];
 }
 
+- (void)shareSchedule
+{
+        NSArray * items = [self convertDataItemToArray:_tableViewDataSource.dataModel.dataArray];
+        NSString * key = self.navigationItem.title;
+        NSDictionary * json = @{key : items};
+        NSURL * fileURL = [[FileManager new] wirteFileWithContent:json];
+        
+        UIActivityViewController * _activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[fileURL] applicationActivities:nil];
+        
+        [self presentViewController:_activityVC animated:YES completion:nil];
+}
+
 #pragma mark - data operation
 - (void)queryDataOnSpecificDate:(NSString *)stringDate
 {
@@ -153,7 +201,7 @@
         self.showIndicator = YES;
         
         __weak typeof(self) weakSelf = self;
-        [_dataOperation queryScheduleDataFromTable:@"schedule" where:@"Date" value:stringDate completion:^(NSMutableArray *result) {
+        [_dataOperation queryScheduleDataFromTable:@"schedule" where:@"Date" value:stringDate completion:^(NSArray *result) {
                 
                 [weakSelf updateDataSource:result];
                 
@@ -162,7 +210,7 @@
         }];
 }
 
-- (void)updateDataSource:(NSMutableArray *)newData
+- (void)updateDataSource:(NSArray *)newData
 {
         NSArray * sortArray = [self sortDataByOrderIndex:newData];
         _dataModel = [[DataModel alloc]initWithQueryData:sortArray];
@@ -181,7 +229,7 @@
         [_dataOperation insertData:item intoScheduleTable:@"schedule"];
 }
 
-- (NSArray *)sortDataByOrderIndex:(NSMutableArray *)data
+- (NSArray *)sortDataByOrderIndex:(NSArray *)data
 {
         NSMutableArray * sortArray = [NSMutableArray array];
         [data enumerateObjectsUsingBlock:^(NSMutableArray * sectionArray, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -207,7 +255,24 @@
         return sortArray;
 }
 
-#pragma mark - update Action
+- (NSArray *)convertDataItemToArray:(NSArray *)items
+{
+        NSMutableArray * result = [NSMutableArray array];
+        [items enumerateObjectsUsingBlock:^(NSArray * sectionArray, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                NSMutableArray * dictionarys = [NSMutableArray array];
+                [sectionArray enumerateObjectsUsingBlock:^(DataItem * item, NSUInteger idx, BOOL * _Nonnull stop) {
+                        
+                        [dictionarys addObject:item.jsonDictionary];
+                }];
+                
+                [result addObject:dictionarys];
+        }];
+        
+        return result;
+}
+
+#pragma mark - UI update Action
 - (void)setShowIndicator:(BOOL)showIndicator
 {
         _showIndicator = showIndicator;
@@ -282,7 +347,6 @@
         _detailVC.delegate = self;
         _detailVC.enableAddButton = NO;
         
-        NSLog(@"%@ (%@)", didSelectItem.Name, didSelectItem.OrderIndex);
         [self.navigationController pushViewController:_detailVC animated:YES];
 }
 
@@ -312,6 +376,26 @@
         {
                 [_tableViewDataSource updateTableView:_scheduleTableView newDataItem:dataItem atIndexPath:_didSelectIndexPath];
         }
+}
+
+- (void)viewController:(UIViewController *)viewController shouldPresentViewController:(UIViewController *)presentViewController
+{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+                // close menu
+                [[SlideMenuController sharedInstance] closeMenu];
+                
+                if ([presentViewController isKindOfClass:[PreviewTableViewController class]])
+                {
+                        PreviewTableViewController * previewVC = (PreviewTableViewController *)presentViewController;
+                        previewVC.delegate = self;
+                        [self.navigationController pushViewController:previewVC animated:YES];
+                }
+                else if ([presentViewController isKindOfClass:[UIAlertController class]])
+                {
+                        [self presentViewController:presentViewController animated:YES completion:nil];
+                }
+        });
 }
 
 #pragma mark - CustomDataSourceDelegate

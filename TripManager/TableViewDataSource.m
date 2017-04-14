@@ -15,8 +15,6 @@
         NSIndexPath * _selectCellIndexPath;
         
         CADisplayLink * _displayLink;
-        
-        
 }
 
 @property (nonatomic) UIView * selectCellView;
@@ -76,7 +74,6 @@
                         [self tableView:tableView longPressBegan:gesture];
                         break;
                 case UIGestureRecognizerStateChanged:
-//                        [self tableView:tableView longPressChange:gesture];
                         break;
                 case UIGestureRecognizerStateEnded:
                         [self tableView:tableView longPressEnd:gesture];

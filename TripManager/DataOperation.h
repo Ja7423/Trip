@@ -18,7 +18,9 @@
 - (void)querySearchDataFromTable:(NSString *)table where:(NSArray *)columns value:(NSString *)condition completion:(void (^) (NSArray * result))completion;
 
 #pragma mark - schedule table
-- (void)queryScheduleDataFromTable:(NSString *)table where:(NSString *)column value:(NSString *)condition completion:(void (^) (NSMutableArray * result))completion;
+- (void)queryScheduleDataFromTable:(NSString *)table where:(NSString *)column value:(NSString *)condition completion:(void (^) (NSArray * result))completion;
+
+- (void)queryScheduleFileData:(NSArray *)queryDatas completion:(void (^) (NSArray * result))completion;
 
 - (void)insertData:(DataItem *)items intoScheduleTable:(NSString *)table;
 

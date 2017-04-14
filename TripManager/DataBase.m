@@ -48,9 +48,9 @@ static DataBase * _dataBase = nil;
         FileManager * _fileManager = [[FileManager alloc]init];
         __weak typeof(self) weakSelf = self;
         
-        NSLog(@"====== updateDataBaseWithRequests5 ======");
+        NSLog(@"====== updateDataBaseWithRequests ======");
         [_dataBaseQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-                NSLog(@"start transaction (%@)", [NSThread currentThread]);
+                
                 for (DownloadRequest * request in requests)
                 {
                         NSLog(@"file : %@", request.fileName);
@@ -70,7 +70,7 @@ static DataBase * _dataBase = nil;
                 
         }];
         
-        NSLog(@"====== end updateDataBaseWithRequests5 ======");
+        NSLog(@"====== end updateDataBaseWithRequests ======");
 }
 
 
@@ -79,7 +79,7 @@ static DataBase * _dataBase = nil;
 {
         __weak typeof(self) weakSelf = self;
         [_dataBaseQueue inDatabase:^(FMDatabase *db) {
-                NSLog(@"querySearchDataFromTable (%@)", [NSThread currentThread]);
+                
                 FMResultSet * result = [weakSelf DB:db selectFrom:table where:columns like:condition];
                 
                 if (completion && result)
@@ -90,14 +90,13 @@ static DataBase * _dataBase = nil;
 }
 
 
-
 #pragma mark schedule
 - (void)queryScheduleDataFromTable:(NSString *)table innerJoin:(NSArray *)dataBaseTables on:(NSArray *)tableConditions equalTo:(NSArray *)dataBaseTableConditions where:(NSString *)column equalValue:(NSString *)condition completion:(void (^) (NSArray *))completion
 {
         NSMutableArray * resultSets = [NSMutableArray array];
         __weak typeof(self) weakSelf = self;
         [_dataBaseQueue inDatabase:^(FMDatabase *db) {
-                NSLog(@"queryScheduleDataFromTable (%@)", [NSThread currentThread]);
+                
                 [dataBaseTables enumerateObjectsUsingBlock:^(NSString * baseTable, NSUInteger idx, BOOL * _Nonnull stop) {
                         
                         FMResultSet * result = [weakSelf DB:db selectFrom:table innerJoin:baseTable  on:tableConditions[idx] equalTo:dataBaseTableConditions[idx] where:column equalValue:condition];
@@ -110,6 +109,26 @@ static DataBase * _dataBase = nil;
                         completion(resultSets);
                 }
         }];
+}
+
+- (void)queryScheduleFileData:(NSArray *)queryDatas FromTable:(NSArray *)tables completion:(void (^) (NSArray *))completion
+{
+        NSMutableArray * resultSets = [NSMutableArray array];
+        __weak typeof(self) weakSelf = self;
+        [queryDatas enumerateObjectsUsingBlock:^(DataItem * item, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                NSString * table = tables[item.DataItemType.integerValue];
+                [_dataBaseQueue inDatabase:^(FMDatabase *db) {
+                        
+                        FMResultSet * resultSet = [weakSelf DB:db selectFrom:table where:@"Id" isEqualValue:item.Id];
+                        [resultSets addObject:resultSet];
+                }];
+        }];
+        
+        if (completion)
+        {
+                completion(resultSets);
+        }
 }
 
 - (void)insertData:(DataItem *)item intoScheduleTable:(NSString *)table
@@ -130,7 +149,7 @@ static DataBase * _dataBase = nil;
                         
                         [sectionArray enumerateObjectsUsingBlock:^(DataItem * item, NSUInteger idx, BOOL * _Nonnull stop) {
                                 
-                                [weakSelf DB:db update:item intoScheduleTable:table where:item.Id];
+                                [weakSelf DB:db update:item intoScheduleTable:table where:item.Id and:item.Date];
                         }];
                 }];
         }];
@@ -279,10 +298,10 @@ static DataBase * _dataBase = nil;
         return [db executeUpdate:syntax, item.Add, item.Class, item.Class1, item.Class2, item.Class3, item.Description, item.Id, item.Keyword, item.Name, item.Opentime, item.Picture1, item.Picture2, item.Picture3, item.Px, item.Py, item.Tel, item.Ticketinfo, item.Serviceinfo, item.Travellinginfo, item.Website, Id];
 }
 
-- (BOOL)DB:(FMDatabase *)db update:(DataItem *)item intoScheduleTable:(NSString *)table where:(NSString *)Id
+- (BOOL)DB:(FMDatabase *)db update:(DataItem *)item intoScheduleTable:(NSString *)table where:(NSString *)Id and:(NSString *)visitDate
 {
-        NSString * syntax = [NSString stringWithFormat:@"UPDATE %@ SET Id = ?, Date = ?, OrderIndex = ?, CustomRemarks = ?, VisitTime = ?, DataItemType = ? WHERE Id = ?", table];
-        return [db executeUpdate:syntax, item.Id, item.Date, item.OrderIndex, item.CustomRemarks, item.VisitTime, item.DataItemType, Id];
+        NSString * syntax = [NSString stringWithFormat:@"UPDATE %@ SET Id = ?, Date = ?, OrderIndex = ?, CustomRemarks = ?, VisitTime = ?, DataItemType = ? WHERE Id = ? AND Date = ?", table];
+        return [db executeUpdate:syntax, item.Id, item.Date, item.OrderIndex, item.CustomRemarks, item.VisitTime, item.DataItemType, Id, visitDate];
 }
 
 #pragma mark delete
