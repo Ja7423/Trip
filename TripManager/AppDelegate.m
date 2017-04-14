@@ -20,9 +20,6 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-        NSLog(@"URL : %@", url);
-        NSLog(@"options : %@", options);
-        
         return YES;
 }
 
