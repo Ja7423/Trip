@@ -247,7 +247,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@hasLaunchedOnceKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"finishUpdate" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"finishUpdate" object:nil];
 }
 
 @end

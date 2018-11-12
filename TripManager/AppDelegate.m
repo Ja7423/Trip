@@ -81,7 +81,7 @@
 }
 
 #pragma mark UNUserNotificationCenterDelegate
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler
 {
         /*
          When the user responds to a notification, the system calls this method with the results. At the end of your implementation, you must call the completion​Handler block to let the system know that you are done processing the notification.
@@ -100,7 +100,7 @@
 }
 
 #pragma mark BackgroundURLSession
-- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler
 {
         self.backgroundSessionCompletionHandle = completionHandler;
 }

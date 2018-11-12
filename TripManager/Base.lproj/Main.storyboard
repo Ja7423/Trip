@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F43c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RRv-D2-gXV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RRv-D2-gXV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -25,18 +25,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xFh-1e-WmI" id="27B-WY-8Ce">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="9Ru-s0-IkQ">
-                                            <rect key="frame" x="18" y="18" width="30" height="30"/>
+                                            <rect key="frame" x="26" y="21" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="ena-30-oFp"/>
                                                 <constraint firstAttribute="height" constant="30" id="xt8-AV-Dkb"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VisitTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGa-aY-w0e">
-                                            <rect key="frame" x="58" y="35" width="71" height="25"/>
+                                            <rect key="frame" x="66" y="35" width="71" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="F4i-38-4xb"/>
                                             </constraints>
@@ -45,7 +45,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBQ-th-4cp">
-                                            <rect key="frame" x="58" y="5" width="312" height="25"/>
+                                            <rect key="frame" x="66" y="5" width="304" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="9N7-hk-5kx"/>
                                             </constraints>
@@ -119,18 +119,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xHn-at-6Dk" id="gJi-bx-zGr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="vO7-Va-FfW">
-                                                    <rect key="frame" x="18" y="18" width="30" height="30"/>
+                                                    <rect key="frame" x="25" y="21" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="HTc-u7-WTv"/>
                                                         <constraint firstAttribute="height" constant="30" id="soB-Sy-LTT"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VisitTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dde-hn-Iul">
-                                                    <rect key="frame" x="58" y="35" width="71" height="25"/>
+                                                    <rect key="frame" x="65" y="35" width="71" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="uas-6o-nX9"/>
                                                     </constraints>
@@ -139,7 +139,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-IV-wkP">
-                                                    <rect key="frame" x="58" y="5" width="312" height="25"/>
+                                                    <rect key="frame" x="65" y="5" width="305" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="DcE-nj-67q"/>
                                                     </constraints>
@@ -518,11 +518,10 @@
             <objects>
                 <navigationController id="RRv-D2-gXV" customClass="SlideMenuController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SRd-z4-0DQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Nb6-lo-G9M">
-                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -537,7 +536,7 @@
     <resources>
         <image name="direction" width="25" height="25"/>
         <image name="phone" width="25" height="25"/>
-        <image name="testImage" width="16" height="16"/>
+        <image name="testImage" width="75" height="75"/>
         <image name="website" width="25" height="25"/>
     </resources>
 </document>

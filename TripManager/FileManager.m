@@ -105,7 +105,7 @@
         NSData * data = [NSData dataWithContentsOfURL:fileLocation];
         NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
-        NSArray * array = json[@"Infos"][@"Info"];
+        NSArray * array = json[@"XML_Head"][@"Infos"][@"Info"];
         
         [array enumerateObjectsUsingBlock:^(NSDictionary * item, NSUInteger idx, BOOL * _Nonnull stop) {
                 

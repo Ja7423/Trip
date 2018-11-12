@@ -19,7 +19,7 @@
         NSInteger _taskCount;
 }
 
-@property (copy) void (^backgroundSessionCompletionHandle)();
+@property (copy) void (^backgroundSessionCompletionHandle)(void);
 
 @end
 
